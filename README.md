@@ -1,5 +1,9 @@
 # Cpp-Course-Projects
 
+# TODO: 
+* Add CMake to all programs
+* Write the explanation and the use of the programs
+
 ### 2D Robot Game:
 
 
