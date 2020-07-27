@@ -3,8 +3,12 @@ CXXFLAGS = -Wall -g
 
 default: main
 
-main:
+DynIntStack.o: DynIntStack.cpp
 	$(CXX) $(CXXFLAGS) -c DynIntStack.cpp -o DynIntStack.o
-	$(CXX) $(CXXFLAGS) -c burakkuz_Kuz_Burak_hw4.cpp -o burakkuz_Kuz_Burak_hw4.o
-	$(CXX) $(CXXFLAGS) burakkuz_Kuz_Burak_hw4.o DynIntStack.o -o main
 
+main: main.cpp DynIntStack.o
+	$(CXX) $(CXXFLAGS) -c main.cpp -o main.o
+	$(CXX) $(CXXFLAGS) main.o DynIntStack.o -o main
+
+clean:
+	rm main *.o
