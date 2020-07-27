@@ -2,9 +2,6 @@
 #ifndef _MazeCoordinate_H
 #define _MazeCoordinate_H
 
-
-
-
 class MazeCoordinate
 {
 	struct node
@@ -13,11 +10,11 @@ class MazeCoordinate
 		int colPosStack;
 		struct node *next;
 
-		node::node()
+		node()
 			:rowPosStack(0), colPosStack(0), next(nullptr)
 		{}
 
-		node::node(int x, int y, struct node * ptr)
+		node(int x, int y, struct node * ptr)
 			: rowPosStack(x), colPosStack(y), next(ptr)
 		{}
 	};

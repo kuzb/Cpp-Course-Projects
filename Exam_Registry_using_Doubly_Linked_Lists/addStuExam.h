@@ -9,7 +9,7 @@
 #include <iomanip>
 using namespace std;
 
-/*	
+/*
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 BURAK KUZ 20647
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -21,11 +21,11 @@ struct stuExam
 		int grade;
 		stuExam* next;
 
-		stuExam::stuExam()
+		stuExam()
 			:exam(""), grade(0), next(NULL)
 		{}
 
-		stuExam::stuExam(string e, int g, stuExam* r)
+		stuExam(string e, int g, stuExam* r)
 			:exam(e), grade(g), next(r)
 		{}
 };
@@ -37,13 +37,13 @@ struct nodeStu {
 	nodeStu* next;
 	nodeStu* previous;
 
-	nodeStu::nodeStu()	 //default constructor
-		:stuName(""), next(NULL), previous(NULL), headExamList(NULL)    
+	nodeStu()	 //default constructor
+		:stuName(""), next(NULL), previous(NULL), headExamList(NULL)
 	{}
 
-	nodeStu::nodeStu(string a, nodeStu* nex, nodeStu* pre, struct stuExam* list ) //constructor
+	nodeStu(string a, nodeStu* nex, nodeStu* pre, struct stuExam* list ) //constructor
 		:stuName(a), next(nex), previous(pre), headExamList(list)
-	{}	
+	{}
 };
 
 

@@ -1,8 +1,8 @@
 #include<iostream>
 #include<string>
 #include<fstream>
-#include<sstream> 
-#include <cctype>     
+#include<sstream>
+#include <cctype>
 #include <iomanip>
 
 //@@@@@@@@@@@@@@@@@@
@@ -11,7 +11,7 @@
 
 using namespace std;
 
-void EntranceDisplay() // displays the entrance 
+void EntranceDisplay() // displays the entrance
 {
 	cout << endl;
 	cout << "Formula 1 Points Table System" << endl;
@@ -26,14 +26,14 @@ void EntranceDisplay() // displays the entrance
 
 bool inputFileCheck(ifstream & inputStream, string inputFile) //checks names of input files
 {
-	if (inputStream.fail()) 
+	if (inputStream.fail())
 	{
 		cout << "Error: Could not open the file " << inputFile << endl;
 		cout << "File cannot be found, Please enter again." << endl;
 		return false;
 	}
-	else 
-	{	
+	else
+	{
 		return true;
 	}
 }
@@ -46,14 +46,14 @@ struct node
 	node * next;
 
 	//default constructor
-	node::node ()
-		:pilotName(""),totalPoint(0), next(NULL)    
+	node ()
+		:pilotName(""),totalPoint(0), next(NULL)
 	{}
-	
+
 	//constructor
-	node::node (string s,int i,int j,node *n)
+	node (string s,int i,int j,node *n)
 		:pilotName(s),totalPoint(j),next(n)
-	{}	
+	{}
 };
 
 bool SearchList(node *head, string namePilot)
@@ -61,9 +61,9 @@ bool SearchList(node *head, string namePilot)
 	while (head != NULL)
 	{
 		if(head->pilotName == namePilot) //If the node with the given pilot name is found
-			return true;			
+			return true;
 		head = head->next;
-	} 
+	}
 	return false;
 }
 
@@ -76,28 +76,28 @@ void DisplayPointTable(node*p) // displays point table
 
 	node*ptr=p->next;
 	while(ptr != NULL)
-	{ 
-		cout << setw(25) << ptr->pilotName 
+	{
+		cout << setw(25) << ptr->pilotName
 			<< setw(20) << ptr->totalPoint << endl;
 		ptr = ptr->next;
 	}
-	
+
 }
 
 void canBeDisplayed (node*&p)// if the user chooses "choice 3" then first it checks whether the point table is empty or if not displays point table
 {
-	if ( (p==NULL) || (p->next==NULL) )  
+	if ( (p==NULL) || (p->next==NULL) )
 	{
 		cout << endl;
 		cout << "The point table is empty" << endl;
 		cout << endl;
 	}
-	else 
+	else
 	{
 		DisplayPointTable(p);
 		cout << endl;
 	}
-				
+
 }
 
 void ClearList(node *head) //Deletes all of the elements in the list
@@ -115,20 +115,20 @@ node * last (node*head,string namePilot)// this part helps movie updates. If the
 {
 	while (head != NULL)
 	{
-		if(head->pilotName == namePilot) 
-			return head;	
+		if(head->pilotName == namePilot)
+			return head;
 		head = head->next;
 	}
-	
+  return head;
 }
 
 node* AddInOrder(node *&head, string &namePilot, int &pot) // Adds new nodes in already existed node in a sorted manner
 {
-   node *  ptr = head;  
+   node *  ptr = head;
 
-    if (head  == NULL || namePilot < head->pilotName)       
-    {   
-		node * temp = new node;  //node to be inserted 
+    if (head  == NULL || namePilot < head->pilotName)
+    {
+		node * temp = new node;  //node to be inserted
 		temp->pilotName = namePilot;
 		temp->totalPoint = pot;
 		temp->next = head; //connect the rest
@@ -136,11 +136,11 @@ node* AddInOrder(node *&head, string &namePilot, int &pot) // Adds new nodes in 
     }
 
     while (ptr->next != NULL && ptr->next->pilotName < namePilot)
-    {    
+    {
 		ptr = ptr->next;
-    } 
+    }
 
-	node * temp = new node;  //node to be inserted 
+	node * temp = new node;  //node to be inserted
 	temp->pilotName = namePilot;
 	temp->totalPoint = pot;
 	temp->next = ptr->next; //connect the rest
@@ -156,7 +156,7 @@ void PointTableFromFile(ifstream&input, node* &p)
 	string namePilot;
 	int pointTotal;
 	bool isFound;
-	
+
 	while(getline(input,line))
 	{
 		istringstream ss (line);
@@ -168,12 +168,12 @@ void PointTableFromFile(ifstream&input, node* &p)
 		{
 			cout << namePilot << " has not been added since the initial points cannot be non-positive." << endl;
 		}
-		else 
+		else
 		{
-			if(isFound) 
+			if(isFound)
 			{
 				node*a;
-				
+
 				temp = p;
 				a = last(p ,namePilot);
 				a->totalPoint = (a->totalPoint) + pointTotal; //pilot points is updated
@@ -181,7 +181,7 @@ void PointTableFromFile(ifstream&input, node* &p)
 					{
 						cout << namePilot << " has been removed from the list since his points became non-positive." << endl;
 						node * ptr;
-		
+
 						if (a == p) //if pilot is in head pointer
 						{
 						p = p->next;
@@ -203,14 +203,14 @@ void PointTableFromFile(ifstream&input, node* &p)
 					}
 			}
 			else
-			{	
+			{
 				p = AddInOrder(p, namePilot, pointTotal);
 				cout << namePilot << " has been added to the list with initial points " << pointTotal << endl;
 			}
 		}
-	} 
-	
-} 
+	}
+
+}
 
 int main()
 {
@@ -222,7 +222,7 @@ int main()
 	node *temporary;
 	p = new node;
 	EntranceDisplay();
-	
+
 	cout << "Your choice : ";
 	while(!(cin >> selectednum))
 	{
@@ -266,7 +266,7 @@ int main()
 				cin >> s;
 				cout << s << " is not integer" << endl;
 				cout << name << " has not been added since the initial points must postive integer " << endl;
-			}	
+			}
 			else if(point < 1 && !(isFound)) //if pilot doesnt exist and its initial points are negative
 				cout << name << " has not been added since the initial points cannot be nonpositive." << endl;
 			else
@@ -281,7 +281,7 @@ int main()
 					{
 						cout << name << " has been removed from the list since his points became non-positive." << endl;
 						node * ptr;
-		
+
 						if (b == p) //if pilot is in head pointer
 						{
 						p = p->next;
@@ -302,26 +302,25 @@ int main()
 					cout << name << " has been updated with new points " << b->totalPoint <<endl;
 					}
 				}
-				else 
+				else
 				{
 					AddInOrder(p,name,point);
 					cout << name << " has been added to the list with initial points:" << point << endl;
 				}
 			}
-			
+
 		}
 		if (selectednum == 3)
 		{
-			canBeDisplayed(p);		
+			canBeDisplayed(p);
 		}
 
 		EntranceDisplay();
 		cout << endl << "Your choice : " ;
 		cin >> selectednum;
 		cout << endl;
-	}	
-		
+	}
+
 	ClearList(p);
-	system("pause");
 	return 0;
 }

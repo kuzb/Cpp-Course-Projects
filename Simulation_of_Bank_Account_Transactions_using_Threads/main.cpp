@@ -6,8 +6,8 @@
 #include <time.h>
 #include <sstream>
 #include <fstream>
-#include <ctime>  
-#include <iomanip>  
+#include <ctime>
+#include <iomanip>
 
 /*
 ++++++++++++++++++++++++++++
@@ -20,7 +20,7 @@ CS204 HW7
 
 using namespace std;
 
-int balance = 0;//initial balance 
+int balance = 0;//initial balance
 
 mutex fMutex;
 
@@ -43,8 +43,8 @@ void printTimeNow()
 {
 	time_t tt = chrono::system_clock::to_time_t(chrono::system_clock::now()); //gets the current time
 	struct tm *ptm = new struct tm; //creating the time struct to be used in thread
-	localtime_s(ptm, &tt); //converting the time structures
-	cout << put_time(ptm,"%X") << endl; 
+	localtime_r(&tt, ptm); //converting the time structures
+	cout << put_time(ptm,"%X") << endl;
 }
 
 //for the thread that is used for a deposit transaction
@@ -54,14 +54,14 @@ void depositeIt(int minDeposit,int maxDeposit, ofstream& output)
 	while (iteration < iterationDeposit)
 	{
 		int sleepDeposit = random_range(minDeposit, maxDeposit); //creates a sleep time for the thread via given range
-		
+
 		this_thread::sleep_for(chrono::seconds(sleepDeposit));
 
-		fMutex.lock();	
+		fMutex.lock();
 		balance += 1; //deposit money on the account
-		cout << "\n1 TL has been deposited: balance is " << balance << ", "; 
+		cout << "\n1 TL has been deposited: balance is " << balance << ", ";
 		printTimeNow();
-		iteration++; 
+		iteration++;
 		fMutex.unlock();
 	}
 }
@@ -80,12 +80,12 @@ void WithdrawIt(int i,int minWithdraw,int maxWithdraw, ofstream& output)
 		if (balance > 0) //balance must be positive in order to withdraw money
 		{
 			balance -= 1; //withdrawing money from account
-			cout << "\nWithdrawal thread " << i-1 << " successfully withdrawn 1 TL; balance is " << balance << ", "; 
+			cout << "\nWithdrawal thread " << i-1 << " successfully withdrawn 1 TL; balance is " << balance << ", ";
 			printTimeNow();
 		}
 		else
 		{
-			cout << "\nWithdrawal thread " << i-1 << " failed to withdraw 1 TL; balance is " << balance << ", "; 
+			cout << "\nWithdrawal thread " << i-1 << " failed to withdraw 1 TL; balance is " << balance << ", ";
 			printTimeNow();
 		}
 		iteration++;
@@ -98,7 +98,7 @@ int main()
 	string fileName;
 	ofstream outputFile;
 	thread action[DECREMENT_THREADS + INCREMENT_THREADS];
-	int minWithdraw, maxWithdraw; 
+	int minWithdraw, maxWithdraw;
 	int minDeposit, maxDeposit;
 
 
@@ -116,7 +116,7 @@ int main()
 	cin >> iterationDeposit;
 
 
-	cout << "Simulation starts at ";  
+	cout << "Simulation starts at ";
 	printTimeNow();
 
 	//deposit and withdraw operations
@@ -145,6 +145,5 @@ int main()
 
 	outputFile.close();
 	outputFile.clear();
-	system("pause");
 	return 0;
 }

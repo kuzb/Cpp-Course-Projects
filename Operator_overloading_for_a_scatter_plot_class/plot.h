@@ -12,11 +12,11 @@ struct Point
 	int x;
 	double y;
 
-	Point::Point()  //default constructer
+	Point()  //default constructer
 		:x(0), y(0.0)
 	{}
 
-	Point::Point(int g, double r) //constructer with parameters
+	Point(int g, double r) //constructer with parameters
 		:x(g), y(r)
 	{}
 
@@ -35,14 +35,14 @@ public:
 	int getSize() const;
 
 	//mutator methods
-	void Plot::setElement(int index, Point anyPoint);
-	void Plot::sortElements();
+	void setElement(int index, Point anyPoint);
+	void sortElements();
 
 	//member functions
-	const Plot & Plot::operator = (const Plot & rhs); //add const??
-	bool Plot::operator == (const Plot & rhs);
-	Plot Plot::operator - (Point rhs); //removes a certain Point from the Plot object
-	Plot Plot::operator + (Point lhs); //point on lhs @@@ took const & out
+	const Plot & operator = (const Plot & rhs); //add const??
+	bool operator == (const Plot & rhs);
+	Plot operator - (Point rhs); //removes a certain Point from the Plot object
+	Plot operator + (Point lhs); //point on lhs @@@ took const & out
 private:
 	int _theSize;
 	Point* _elements;

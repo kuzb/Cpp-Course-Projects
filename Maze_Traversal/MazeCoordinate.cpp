@@ -1,3 +1,9 @@
+#include <stdio.h>
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+#include <string>
+#include <vector>
 #include "MazeCoordinate.h"
 
 using namespace std;

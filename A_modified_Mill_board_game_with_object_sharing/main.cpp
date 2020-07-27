@@ -19,7 +19,7 @@ void readXY (int & x, int & y)
 			cout << "Out of range, try again!" << endl;
 	} while (x<0 || x>3 || y<0 || y >3);
 }
-		
+
 
 int main()
 {
@@ -33,14 +33,14 @@ int main()
 		cin >> symbol;
 	} while (symbol == '-');
 	Player p1(symbol, myBoard);
-	
+
 	do
 	{
 		cout << "Enter game piece character (other than '-' and other player's character) for player 2:" << endl;
 		cin >> symbol;
 	} while ((symbol == '-') || (symbol == p1.getSymbol()));
 	Player p2(symbol, myBoard);
-	
+
 	int pieces = 0;
 	int x1, y1, x2, y2;
 
@@ -102,9 +102,8 @@ int main()
 	}
 	else
 	{
-		cout << "Congratulations! Player " << p1.getSymbol() << " you're my hero! Player " << p2.getSymbol() << " never stood a chance!"  << endl; 
+		cout << "Congratulations! Player " << p1.getSymbol() << " you're my hero! Player " << p2.getSymbol() << " never stood a chance!"  << endl;
 	}
 
-	system("pause");
 	return 0;
 }

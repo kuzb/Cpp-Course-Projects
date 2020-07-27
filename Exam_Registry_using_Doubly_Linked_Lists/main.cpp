@@ -2,7 +2,7 @@
 
 using namespace std;
 
-/*	
+/*
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 BURAK KUZ 20647
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -10,19 +10,19 @@ BURAK KUZ 20647
 
 bool inputFileCheck(ifstream & inputStream, string inputFile) //checks names of input files
 {
-	if (inputStream.fail()) 
+	if (inputStream.fail())
 	{
 		cout << "Error: Could not open the file " << inputFile << endl;
 		cout << "File cannot be found, Please enter again." << endl;
 		return false;
 	}
-	else 
-	{	
+	else
+	{
 		return true;
 	}
 }
 
-void EntranceDisplay() // displays the entrance 
+void EntranceDisplay() // displays the entrance
 {
 	cout << endl;
 	cout << "Exam Grades" << endl;
@@ -38,7 +38,7 @@ void EntranceDisplay() // displays the entrance
 	cout << endl;
 }
 
-void loadFile(ifstream& input, StudentList& Stu) //adds the students into student node and exams to exams node 
+void loadFile(ifstream& input, StudentList& Stu) //adds the students into student node and exams to exams node
 {
 	string line = "";
 	string nameStu, nameCou;
@@ -127,6 +127,5 @@ int main(){
 	inputFile.close();
 	inputFile.clear();
 	Stu.deleteAll();
-	system("pause");
 	return 0;
 }
