@@ -1,19 +1,10 @@
 # Cpp-Course-Projects
 
-# TODO: 
-* Add CMake to all programs
-* Write the explanation and the use of the programs
-
-### 2D Robot Game:
-
 
 ### A modified Mill board game with object sharing:
 
 
 ### Brackets Parsing with Stacks:
-
-
-### De-Comprassion implementation with Hash Tables:
 
 
 ### Exam Registry using Doubly Linked Lists:
@@ -40,7 +31,10 @@
 ### Simulation of Bank Account Transactions using Threads:
 
 
-### Skyline Problem with Priority Queues:
+### Skyline Problem with Priority Queues
 
 
-### VLSI concept using Quad Trees:
+### VLSI concept using Quad Trees: CURRENTLY NOT WORKING
+
+
+### De-compression implementation with Hash Tables: NOT WORKING
