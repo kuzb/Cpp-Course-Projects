@@ -1,6 +1,8 @@
+#include <vector>
+#include "LinkedListTemplate.h"
 #pragma once
-#ifndef _QUADTREE_H 
-#define _QUADTREE_H 
+#ifndef _QUADTREE_H
+#define _QUADTREE_H
 /*
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
@@ -36,12 +38,12 @@ struct QuadNode //to store rectangles, linkedlists, and four child nodes in a no
 	QuadNode  *TopLeft, *TopRight, *BottomLeft, *BottomRight;
 
 	QuadNode(const Rectangle & rec)
-	{		
+	{
 		Extent = rec; //each node is assined to Extent whose value has been given as parameter
 		TopLeft = nullptr; //each quadnodes children are initially pointing to NULL
 		TopRight = nullptr;
 		BottomLeft = nullptr;
-		BottomRight = nullptr;		
+		BottomRight = nullptr;
 	}
 };
 

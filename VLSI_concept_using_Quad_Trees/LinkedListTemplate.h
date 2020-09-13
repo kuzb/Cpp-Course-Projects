@@ -6,18 +6,18 @@
 template <class itemType>
 struct node {
 	itemType info;
-	node *next; 
+	node *next;
 	node ()
 	{}
 
 	node (itemType s, node * link)
 		: info(s), next (link)
 	{ }
-	
+
 };
 
 template <class itemType>
-class LinkedList 
+class LinkedList
 {
 	public:
 		 int size;
@@ -25,8 +25,7 @@ class LinkedList
 		 LinkedList();
 		 void printList() const;
 		 void add(itemType n);
-		 void deleteList ();
+		 void deleteList();
 };
 
-#include "LinkedListTemplate.cpp"
 #endif

@@ -1,4 +1,8 @@
-#include "stdafx.h"
+#include <stdio.h>
+#include <vector>
+#include <iostream>
+#include <fstream>
+#include "LinkedListTemplate.h"
 #include "QuadTree.h"
 /*
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -67,12 +71,12 @@ void QuadTree::find(const Point & temp, QuadNode *& t, int & numRectangles, vect
 				while (verticalAxis != NULL)
 				{
 					if (temp.y >= verticalAxis->info.Top && temp.x >= verticalAxis->info.Left
-						&& temp.y < verticalAxis->info.Bottom  &&temp.x < verticalAxis->info.Right)
-					{						
+						&& temp.y < verticalAxis->info.Bottom  && temp.x < verticalAxis->info.Right)
+					{
 						theRectangles.push_back(verticalAxis->info);
 						numRectangles++;
 					}
-					if (t->BottomLeft != NULL, t->BottomRight != NULL, t->TopRight != NULL, t->TopLeft != NULL) //CHECKPOINT
+					if (t->BottomLeft != NULL || t->BottomRight != NULL || t->TopRight != NULL || t->TopLeft != NULL) //CHECKPOINT
 					{
 						//for top left child
 						if (temp.x < t->Extent.vertical && temp.y < t->Extent.horizontal)
@@ -104,12 +108,12 @@ void QuadTree::find(const Point & temp, QuadNode *& t, int & numRectangles, vect
 				while (HorizontalAxis != NULL)
 				{
 					if (temp.y >= HorizontalAxis->info.Top && temp.x >= HorizontalAxis->info.Left
-						&& temp.y < HorizontalAxis->info.Bottom  &&temp.x < HorizontalAxis->info.Right)
-					{						
+						&& temp.y < HorizontalAxis->info.Bottom  && temp.x < HorizontalAxis->info.Right)
+					{
 						theRectangles.push_back(HorizontalAxis->info);
 						numRectangles++;
 					}
-					if (t->BottomLeft != NULL, t->BottomRight != NULL, t->TopRight != NULL, t->TopLeft != NULL)
+					if (t->BottomLeft != NULL || t->BottomRight != NULL || t->TopRight != NULL || t->TopLeft != NULL)
 					{
 						//for top left child
 						if (temp.x < t->Extent.vertical && temp.y < t->Extent.horizontal)
@@ -138,7 +142,7 @@ void QuadTree::find(const Point & temp, QuadNode *& t, int & numRectangles, vect
 		}
 		else
 		{
-			if (t->BottomLeft != NULL, t->BottomRight != NULL, t->TopRight != NULL, t->TopLeft != NULL)
+			if (t->BottomLeft != NULL || t->BottomRight != NULL || t->TopRight != NULL || t->TopLeft != NULL)
 			{
 				//for top left child
 				if (temp.x < t->Extent.vertical && temp.y < t->Extent.horizontal)
@@ -177,7 +181,7 @@ void QuadTree::insert(const Rectangle & x, QuadNode *& t)  const //private metho
 	static int pos; //to determine position of newly created node in the quad tree
 	//it is in vertical axis
 	if (x.Left <= t->Extent.vertical && x.Right > t->Extent.vertical)
-	{		
+	{
 		t->Vertical.add(x);
 	}
 	//it is in horizontal axis
@@ -190,8 +194,8 @@ void QuadTree::insert(const Rectangle & x, QuadNode *& t)  const //private metho
 	{
 		pos = 0;
 		if (t->TopLeft == NULL)
-		{ 
-			Rectangle topleft(t->Extent.Top, t->Extent.Left, 
+		{
+			Rectangle topleft(t->Extent.Top, t->Extent.Left,
 				(t->Extent.Top + t->Extent.Bottom) / 2, (t->Extent.Left + t->Extent.Right) / 2);
 			t->TopLeft = new QuadNode(topleft);
 		}
