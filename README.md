@@ -1,5 +1,7 @@
 # Cpp-Course-Projects
 
+Some of the Homeworks/Projects done for Introduction to Computing, Advanced Programming, and Data
+Structures courses between 2016 and 2017.
 
 ### A modified Mill board game with object sharing:
 
@@ -37,4 +39,4 @@
 ### VLSI concept using Quad Trees: CURRENTLY NOT WORKING
 
 
-### De-compression implementation with Hash Tables: NOT WORKING
+### De-compression implementation with Hash Tables: CURRENTLY NOT WORKING
